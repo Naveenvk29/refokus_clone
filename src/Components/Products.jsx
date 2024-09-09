@@ -1,4 +1,6 @@
+import { motion } from "framer-motion";
 import Product from "./Product";
+import { useState } from "react";
 const Products = () => {
   const products = [
     {
@@ -38,11 +40,113 @@ const Products = () => {
       case: true,
     },
   ];
+
+  const [pos, setPos] = useState(0);
+
+  const mover = (item) => {
+    setPos(item * 23);
+  };
+
   return (
-    <div className="mt-32">
+    <div className="mt-32 relative">
       {products.map((item, index) => {
-        return <Product key={index} values={item} />;
+        return (
+          <Product key={index} values={item} mover={mover} count={index} />
+        );
       })}
+      <div className="absolute top-0 w-full h-full  pointer-events-none ">
+        <motion.div
+          initial={{ y: pos, x: "-50%" }}
+          animate={{ y: pos + `rem` }}
+          transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.6 }}
+          className=" window absolute w-[32rem] h-[23rem] left-[45%] translate-x-[-50%] bg-white overflow-hidden"
+        >
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.6 }}
+            className="w-full h-full "
+          >
+            <video
+              loop
+              muted
+              src="../videos/Cula_promo_new_4_3.mp4"
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.6 }}
+            className="w-full h-full "
+          >
+            <video
+              loop
+              muted
+              src="../videos/Maniv-Compressed.mp4"
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.6 }}
+            className="w-full h-full "
+          >
+            <video
+              loop
+              muted
+              src="../videos/showcase_4_3.mp4"
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.6 }}
+            className="w-full h-full "
+          >
+            <video
+              loop
+              muted
+              src="../videos/rocketchat.webm"
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.6 }}
+            className="w-full h-full "
+          >
+            <video
+              loop
+              muted
+              src="../videos/rainfall.webm"
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.6 }}
+            className="w-full h-full "
+          >
+            <video
+              loop
+              muted
+              src="../videos/summon.webm"
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.6 }}
+            className="w-full h-full "
+          >
+            <video
+              loop
+              muted
+              src="../videos/Cula_promo_new_4_3.mp4"
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 };

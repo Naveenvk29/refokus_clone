@@ -10,14 +10,15 @@ const Navbar = () => {
         <div className="links flex gap-14 ml-20">
           {["Home", "work", "culture", "", "News"].map((elem, index) =>
             elem.length === 0 ? (
-              <span className="w-[2px] h-7 bg-zinc-700"></span>
+              <span key={index} className="w-[2px] h-7 bg-zinc-700"></span>
             ) : (
               <a
-                className="uppercase text-sm flex items-center justify-center gap-1 "
                 key={index}
+                className="uppercase text-sm flex items-center justify-center gap-1 "
               >
                 {index === 1 && (
                   <span
+                    key={index}
                     style={{
                       boxShadow: "0 0 0.45em #00FF19 ",
                     }}
